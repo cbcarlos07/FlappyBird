@@ -10,12 +10,23 @@ public class FlappyBird extends ApplicationAdapter {
     ///private int contador = 0;
     private SpriteBatch batch;
     private Texture passaro;
+    private Texture fundo;
+
+    //Atriguto de configuração
+    private int movimento = 0;
+    private int larguraDispositivo;
+    private int alturaDispositivo;
+
 	@Override
 	public void create () {
 		//Gdx.app.log("Create", "Inicializado o jogo");
 
         batch = new SpriteBatch();
         passaro =  new Texture("passaro1.png");
+        fundo   =  new Texture("fundo.png");
+
+        larguraDispositivo = Gdx.graphics.getWidth();
+        alturaDispositivo = Gdx.graphics.getHeight();
 	}
 
 	@Override
@@ -23,9 +34,12 @@ public class FlappyBird extends ApplicationAdapter {
         /*contador++;
         Gdx.app.log("Render", "Renderizando o jogo: "+contador);*/
 
-        batch.begin();
+        movimento++;
 
-        batch.draw(passaro, 0, 0);
+        batch.begin();
+        //batch.draw(x, y);
+        batch.draw(fundo,0,0, larguraDispositivo, alturaDispositivo);
+        batch.draw(passaro, movimento, 400);
 
         batch.end();
 
